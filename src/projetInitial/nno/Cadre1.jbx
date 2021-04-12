@@ -1,0 +1,40 @@
+[PropertyInfo]
+al,anaLex,false,false, , ,false,<défaut>
+choixFichier,JFileChooser,false,false, , ,false,<défaut>
+document1,Document,false,false, , ,false,<défaut>
+fichierCourant,String,false,false, , ,false,<défaut>
+gridBagLayout1,GridBagLayout,false,false, , ,false,<défaut>
+gridBagLayout2,GridBagLayout,false,false, , ,false,<défaut>
+image1,ImageIcon,false,false, , ,false,<défaut>
+image2,ImageIcon,false,false, , ,false,<défaut>
+image3,ImageIcon,false,false, , ,false,<défaut>
+jButton1,JButton,false,false, , ,false,<défaut>
+jButton2,JButton,false,false, , ,false,<défaut>
+jButton3,JButton,false,false, , ,false,<défaut>
+jButton4,JButton,false,false, , ,false,<défaut>
+jButton5,JButton,false,false, , ,false,<défaut>
+jButton6,JButton,false,false, , ,false,<défaut>
+jButton7,JButton,false,false, , ,false,<défaut>
+jMenuBar1,JMenuBar,false,false, , ,false,<défaut>
+jMenuFile,JMenu,false,false, , ,false,<défaut>
+jMenuFileExit,JMenuItem,false,false, , ,false,<défaut>
+jMenuHelp,JMenu,false,false, , ,false,<défaut>
+jMenuHelpAbout,JMenuItem,false,false, , ,false,<défaut>
+jPanel1,JPanel,false,false, , ,false,<défaut>
+jScrollPane1,JScrollPane,false,false, , ,false,<défaut>
+jScrollPane2,JScrollPane,false,false, , ,false,<défaut>
+jScrollPane3,JScrollPane,false,false, , ,false,<défaut>
+jSplitPane1,JSplitPane,false,false, , ,false,<défaut>
+jSplitPane2,JSplitPane,false,false, , ,false,<défaut>
+jTextArea1,JTextArea,false,false, , ,false,<défaut>
+jTextArea2,JTextArea,false,false, , ,false,<défaut>
+jTextArea3,JTextArea,false,false, , ,false,<défaut>
+jToolBar,JToolBar,false,false, , ,false,<défaut>
+modifie,boolean,false,false, , ,false,<défaut>
+titledBorder1,TitledBorder,false,false, , ,false,<défaut>
+titledBorder2,TitledBorder,false,false, , ,false,<défaut>
+[IconNames]
+
+
+
+

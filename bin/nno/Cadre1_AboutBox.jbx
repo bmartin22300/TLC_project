@@ -1,0 +1,26 @@
+[PropertyInfo]
+borderLayout1,BorderLayout,false,false, , ,false,<défaut>
+borderLayout2,BorderLayout,false,false, , ,false,<défaut>
+button1,JButton,false,false, , ,false,<défaut>
+comments,String,false,false, , ,false,<défaut>
+copyright,String,false,false, , ,false,<défaut>
+flowLayout1,FlowLayout,false,false, , ,false,<défaut>
+gridLayout1,GridLayout,false,false, , ,false,<défaut>
+image1,ImageIcon,false,false, , ,false,<défaut>
+imageLabel,JLabel,false,false, , ,false,<défaut>
+insetsPanel1,JPanel,false,false, , ,false,<défaut>
+insetsPanel2,JPanel,false,false, , ,false,<défaut>
+insetsPanel3,JPanel,false,false, , ,false,<défaut>
+label1,JLabel,false,false, , ,false,<défaut>
+label2,JLabel,false,false, , ,false,<défaut>
+label3,JLabel,false,false, , ,false,<défaut>
+label4,JLabel,false,false, , ,false,<défaut>
+panel1,JPanel,false,false, , ,false,<défaut>
+panel2,JPanel,false,false, , ,false,<défaut>
+product,String,false,false, , ,false,<défaut>
+version,String,false,false, , ,false,<défaut>
+[IconNames]
+
+
+
+
