@@ -1,0 +1,31 @@
+//-------------------------------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//
+// paramètre formel de mode in out : paramètre effectif de mode in
+//---------------------------------------------------------------------
+
+
+procedure e is
+
+  type aa is class
+    v: integer;
+  interface
+    constructor create();
+    procedure q(j: in out integer);
+  implementation
+    constructor create is
+    begin
+      v:=5
+    end;
+    procedure q is
+    begin
+      j:=j+1
+    end;
+  end;
+  
+  ff:aa;
+begin
+  ff:=aa.create();
+  ff.q(8)                //param. effectif : expression. Mess. erreur attendu ici
+end.

@@ -1,0 +1,116 @@
+//---------------------------------------------------------------
+// Programme correct
+//  M. Guyomard
+//
+//  évaluation d'expressions arithmétiques en NNO
+//
+//  lit val puis affiche val*2+1
+//
+//---------------------------------------------------------------
+
+
+
+procedure e is
+
+  type exp is class
+  interface
+    constructor create() ;
+    function eval() return integer ;
+  implementation
+    constructor create is
+    begin
+     error(1)
+    end ;
+    function eval is
+    begin
+      error(2) ;
+      return 0
+    end ;
+  end ;//exp
+  
+  type un is class(exp) //expressions unaires
+    v: integer ;
+  interface
+    constructor create(i: integer) ;
+    function eval() return integer ;
+  implementation
+    constructor create is
+    begin
+      v :=i
+    end ;
+    function eval is
+    begin
+      return v
+    end ;
+  end ;//un
+  
+  type bin is class(exp) //expressions binaires
+    g:exp;
+    d: exp ;
+  interface
+    constructor create() ;
+    function eval() return integer ;
+    function op(a,b: exp) return integer ;
+  implementation
+    constructor create is
+    begin
+      error(3)
+    end ;
+    function eval is
+    begin
+      return this.op(g,d)
+    end ;
+    function op is
+    begin
+      error(4) ;
+      return 0
+    end ;
+  end ;//bin
+  
+  type plus is class(bin) //expressions g+d
+  interface
+    constructor create(l,r: exp) ;
+    function op(a,b: exp) return integer ;
+  implementation
+    constructor create is
+    begin
+      g :=l ;
+      d :=r
+    end ;
+    function op is
+    begin
+      return a.eval()+b.eval()
+    end ;
+  end ;//plus
+  
+  type mult is class(bin)  //expressions g*d
+  interface
+    constructor create(l,r: exp) ;
+    function op(a,b: exp) return integer ;
+  implementation
+    constructor create is
+    begin
+      g:=l ;
+      d:=r
+    end ;
+    function op is
+    begin
+      return a.eval()*b.eval()
+    end ;
+  end ;//mult
+  
+  a,b,e : un ;
+  c : mult ;
+  d : plus ;
+  f : exp ;
+  val : integer ;
+begin
+  get(val) ;
+  a :=un.create(val) ;
+  b :=un.create(2) ;
+  c :=mult.create(a,b) ;
+  e :=un.create(1) ;
+  d :=plus.create(e,c) ;
+  f :=d ;
+  put(f.eval())
+end.

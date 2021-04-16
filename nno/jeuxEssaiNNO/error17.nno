@@ -1,0 +1,32 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// redéfinition d'une opération dans la meme classe
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    x : integer ;
+  interface  
+    constructor create() ;
+    procedure p() ;                 //déclaration de p		
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+    procedure p is                  //première déf. de p
+    begin
+      x:= 34
+    end;
+    procedure p is                  //seconde def. de p : mess. d'erruer attendu ici
+    begin
+      put(56)
+    end;  
+  end ;
+  e :a ;
+begin
+  e:=a.create();
+  e.p()
+end.
