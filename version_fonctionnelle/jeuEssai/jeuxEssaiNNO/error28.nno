@@ -1,0 +1,24 @@
+//--------------------------------------------------------------
+//  programme incorrect
+//    M. Guyomard
+//
+//  une méthode déclarée n'est pas définie dans la classe
+//--------------------------------------------------------------  
+
+procedure e is
+
+  type plus is class
+  interface
+    constructor create(l,r :plus) ;
+    function op() return integer ;   //déclaration
+  implementation
+    constructor create is
+      x:integer;
+    begin
+      x:=90
+    end ;
+  end ;                     //pas de définition de op : mess. erreur attendu.
+
+begin
+  put(5)
+end.

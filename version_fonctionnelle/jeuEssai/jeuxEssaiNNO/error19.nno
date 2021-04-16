@@ -1,0 +1,30 @@
+//-------------------------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// l'appel d'une méthode est incompatible avec sa définition
+//  
+//-------------------------------------------------------------- 
+procedure pp is
+
+  type a is class
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+    procedure p(j :in out a ; k : in a) ;		
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+    procedure p is 
+    begin
+      r:=1
+    end ;
+  end ;
+  
+  e :a ;
+begin
+  e:=a.create(5);
+  e.p()	  //2 param. formels, 0 param. effectif : mess. erreur attendu
+end.

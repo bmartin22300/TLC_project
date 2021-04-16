@@ -1,0 +1,30 @@
+//-----------------------------------------------
+//programme correct :
+//  M. Guyomard
+//
+// redéfinition correcte d'un ident d'attribut par un ident de constr
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    x : integer ;
+  interface  
+    constructor x() ;
+    procedure p() ;
+  implementation
+    constructor x is
+    begin
+      x:=5
+    end ;
+    procedure p is
+      y:a;
+    begin
+      y:=a.x();				// OK
+      put(x)				//OK
+    end ;
+  end ;
+  e :a ;
+begin
+  e:=a.x();
+  e.p()
+end.

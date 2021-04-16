@@ -1,0 +1,21 @@
+//-----------------------------------------------
+// Programme incorect
+//  M. Guyomard
+//
+// constructeur avec paramètre de mode in out
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+  interface  
+    constructor create(i : in out integer) ; //mess. erreur attendu
+  implementation
+    constructor create is
+    begin
+      i:=i+1			
+    end ;
+  end ;
+  
+begin
+  put(15)
+end.

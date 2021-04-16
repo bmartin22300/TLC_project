@@ -1,0 +1,47 @@
+//---------------------------------------------------
+// Programme correct
+//  M. Guyomard
+//
+//  Essai this et passage de param
+//  Affiche  :
+//>2
+//---------------------------------------------------
+procedure e is
+  type a is class
+    r: integer;
+  interface
+    constructor create();
+    procedure x(e: in out integer);
+    procedure y(f: in out integer);
+    procedure z(g: in out integer);
+  implementation
+    constructor create is
+    begin
+      r:=0
+    end;
+    procedure x is
+    begin
+      e:=e+1;
+      this.y(e)               //
+    end;
+    procedure y is
+    begin
+      f:=f+1;
+      this.z(f)
+    end;
+    procedure z is
+    begin
+      put(g)
+    end;
+  end;
+  o: a;
+  i: integer;
+begin
+  i:=0;
+  o:=a.create();
+  o.x(i)            //doit afficher 2
+end.
+
+
+
+

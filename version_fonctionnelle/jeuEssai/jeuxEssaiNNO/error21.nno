@@ -1,0 +1,36 @@
+//-------------------------------------------------------------------------
+//  Programme erroné
+//   M. Guyomard
+//
+//  l'appel d'un constructeur est incompatible avec sa déclaration :
+//  il est appelé avec une classe différente de celle ou il est défini
+//  
+//------------------------------------------------------------------------- 
+
+procedure e is
+
+  type exp is class
+  interface
+    constructor creer() ;				//
+  implementation
+    constructor creer is			//
+    begin
+      put(-1)
+    end ;
+  end ;
+  
+  type un is class(exp) 
+    v :integer ;
+  interface  
+    constructor create(i :integer) ;
+  implementation
+    constructor create is
+    begin
+      v :=i
+    end ;
+  end ;
+  
+  a :un ;
+begin
+  a :=un.creer()				// creer n'est pas le const. de la classe un	
+end.

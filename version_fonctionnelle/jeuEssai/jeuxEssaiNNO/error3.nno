@@ -1,0 +1,44 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// redéfinition d'une m-proc par une m-proc avec un profil différent
+//  mode de passage différent
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    x : integer ;
+  interface  
+    constructor create() ;
+    procedure p(i: in integer) ;             //		
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+    procedure p is
+    begin
+      x:= 34
+    end;
+  end ;
+  type b is class(a)
+    y : integer ;
+  interface  
+    constructor create() ;
+    procedure p(i: in out integer) ;    //mess. erreur attendu ici	
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+    procedure p is
+    begin
+      y:=78
+    end;
+  end ;
+  e :a ;
+begin
+  e:=a.create();
+  e.p()
+end.

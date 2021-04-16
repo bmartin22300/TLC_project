@@ -1,0 +1,63 @@
+//----------------------------------------------------------------
+// Programme correct
+//  M. Guyomard
+//
+//  Essai de polymorphisme et de liaison dynamique
+//
+//  affiche -1 puis 2
+//-----------------------------------------------------------------
+procedure p is
+
+  type liste is class
+    x:integer;
+  interface
+    constructor create(i: integer);
+    procedure p();
+    procedure q();
+  implementation
+    constructor create is
+    begin
+      x:=i
+    end;
+    procedure p is
+    begin
+      put(-1)
+    end;
+    procedure q is
+    begin
+      put(-1)
+    end;
+  end;
+  
+  type b is class(liste)
+    y: integer;
+  interface
+    constructor create(i,j:integer);
+    procedure q();
+    procedure r();
+  implementation
+    constructor create is
+    begin
+      x:=i;
+      y:=j
+    end;
+    procedure q is
+    begin
+      put(2)
+    end;
+    procedure r is
+    begin
+      put(3)
+    end;
+  end;
+  
+  e:liste;
+  f:b;
+begin
+  e:=liste.create(12);
+  f:=b.create(12,0);
+  e.q();                    //appel de liste.q : affiche -1
+  e:=f;                     //e prend le type b
+  e.q();                    //appel de b.q : affiche 2
+  e:=b.create(3,6)          //correct
+end.

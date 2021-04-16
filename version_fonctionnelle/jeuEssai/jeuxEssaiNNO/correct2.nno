@@ -1,0 +1,32 @@
+//-----------------------------------------------
+//programme correct :
+//  M. Guyomard
+//
+// redéfinition correcte d'un identificateur d'attribut par un
+//  identificateur de variable locale
+//  doit ecrire 78
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    r : integer ;                     // OK : attribut
+  interface  
+    constructor create() ;
+    procedure p() ;
+  implementation
+    constructor create is
+    begin
+      r:=5
+    end ;
+    procedure p is
+      r: integer;                      	// OK: variable locale
+    begin
+      r:=78;                         	// OK : var loc
+      put(r)				//OK, var loc. Affiche 78
+    end ;
+  end ;
+  e :a ;
+begin
+  e:=a.create();
+  e.p()
+end.

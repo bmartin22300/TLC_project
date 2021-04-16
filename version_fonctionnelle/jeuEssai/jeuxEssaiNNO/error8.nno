@@ -1,0 +1,29 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// this utilisé comme identificateur de classe 
+//  
+//-----------------------------------------------  
+procedure pp is
+  type this is class 			//mess. erreur attendu ici
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+    procedure p(j :in out this ; k : in this) ;	// la compilation n'atteint pas cette ligne	
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+    procedure p is
+    begin
+      j:=e.create(8);
+      put(12)
+    end ;
+  end ;
+  e :this ;  // la compilation n'atteint pas cette ligne
+begin
+  e:=this.create(5);  // la compilation n'atteint pas cette ligne
+  e.p(e,e)	
+end.

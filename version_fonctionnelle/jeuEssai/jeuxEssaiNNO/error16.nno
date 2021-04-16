@@ -1,0 +1,30 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// redéfinition d'un param par une var loc d'une méthode
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    x : integer ;
+  interface  
+    constructor create() ;
+    procedure p(i: in integer) ;             // décla de i param. formel		
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+    procedure p is
+      i: boolean;                           //décla de i var loc : mess. d'erreur attendu ici
+    begin
+      get(i);
+      x:= i+1
+    end;
+  end ;
+  e :a ;
+begin
+  e:=a.create();
+  e.p(34)
+end.

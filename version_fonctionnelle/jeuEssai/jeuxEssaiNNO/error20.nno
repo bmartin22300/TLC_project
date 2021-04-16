@@ -1,0 +1,32 @@
+//-----------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//
+//  affectation this dans une méthode
+//  
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+    r : integer ;
+  interface  
+    constructor create();
+    procedure q(x: a) ;	
+  implementation
+    constructor create is
+    begin
+      r:=0
+    end ;
+    procedure q is
+    begin
+      this:=x              //mess<; erreur attendu
+    end ;
+  end ;
+  
+  e,f :a ;
+  n:integer;
+  
+begin
+  e:=a.create();
+  e.q()
+end.

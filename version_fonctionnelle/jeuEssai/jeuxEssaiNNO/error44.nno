@@ -1,0 +1,32 @@
+//-----------------------------------------------------
+// Programme incorrect
+//    M. Guyomard
+//
+//  pas de return dans le corps d'une fonction
+//-----------------------------------------------------
+
+
+procedure e is
+  type a is class
+    r: integer;
+  interface
+    constructor create();
+    function o() return integer;
+  implementation
+    constructor create is
+    begin
+      r:=0
+    end;
+    function o is
+    begin
+      r:=r+1
+    end;                   //mess. erreur attendu ici
+  end;
+
+begin
+  put(15)
+end.
+
+
+
+

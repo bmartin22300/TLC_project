@@ -1,0 +1,24 @@
+//-----------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//  
+//  un constructeur appelé
+//  comme une procédure
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+  end ;
+  
+  e :a ;
+begin
+  a.create(12)				//mess erreur attendu ici
+end.

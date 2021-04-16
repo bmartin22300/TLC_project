@@ -1,0 +1,55 @@
+//--------------------------------------------------------------------
+// Programme correct
+//  M/ Guyomard
+//
+//  manipulation de listes d'objets
+//
+//  affiche les valeurs 9, 8, ... ,1
+//--------------------------------------------------------------------
+procedure p is
+  type liste is class
+    val:integer;
+    svt:liste;
+  interface
+    constructor create(v: integer;s:liste);
+    function suivant() return liste;
+    function valeur() return integer;
+  implementation
+    constructor create is
+    begin
+      val:=v;
+      svt:=s
+    end;
+    function valeur is
+    begin
+      return val
+    end;
+    function suivant is
+    begin
+      return svt
+    end;
+  end;
+  i: integer;
+  e,tete: liste;
+begin
+  //CREATION DE LA LISTE :
+  tete:=nil;
+  i:=1;
+  //Invariant : la liste des valeurs de i-1 à 1 est créée,
+    //elle est désignée par la variable tete
+  while i/=10 loop
+    tete:=liste.create(i,tete);
+    i:=i+1
+  end;
+  
+  //AFFICHAGE DE LA LISTE :
+  e:=tete;
+  //Invariant : les valeurs de la liste depuis tete inclus
+    //jusqu'a e exclus sont affichées
+  while e/=nil loop
+    put(e.valeur());
+    e:=e.suivant()
+  end
+end.
+    
+    

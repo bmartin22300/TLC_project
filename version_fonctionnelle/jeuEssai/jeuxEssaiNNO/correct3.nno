@@ -1,0 +1,26 @@
+//-----------------------------------------------------------------
+// Programme correct
+//  M. Guyomard
+//
+//  test de "error"
+//
+//---------------------------------------------------------------
+procedure e is
+  type exp is class
+    v: integer;
+  interface
+    constructor create();
+  implementation
+    constructor create is
+    begin
+      error(1)         //
+    end;
+  end;
+  e: exp;
+begin
+  e:=exp.create()       //affiche "erreur" à l'exécution
+end.
+
+
+
+

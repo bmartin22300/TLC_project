@@ -1,0 +1,36 @@
+//-----------------------------------------------
+//  Programme incorrect
+//  M. Guyomard
+//  
+//    affectation de variables objet incompatibles
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+  end ;
+  
+  type b is class(a)
+    s :boolean ;
+  interface  
+    constructor create(i : integer) ;
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+  end ;
+  
+  e :a ;
+  f :b ;
+begin
+  e:=f;                         //correct
+  f:=e				//incorrect : mess. erreur attendu ici
+end.

@@ -1,0 +1,21 @@
+//-----------------------------------------------
+//  programme incorrect
+//   M. Guyomard
+//
+//   return dans un constructeur
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+    constructor create is
+    begin
+      return 67			//mess. erreur attendu
+    end ;
+  end ;
+  
+begin
+  put(15)
+end.

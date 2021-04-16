@@ -1,0 +1,54 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// redéfinition d'une m-fonction par une m-proc
+//
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    x : integer ;
+  interface  
+    constructor create() ;
+    procedure p() ;
+    function f() return boolean;           //		
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+    procedure p is
+    begin
+      put(x)
+    end ;
+    function f is
+    begin
+      return 34=0
+    end;
+  end ;
+  type b is class(a)
+    y : integer ;
+  interface  
+    constructor create() ;
+    procedure p() ;
+    procedure f() ;               //mess. erreur attendu ici	
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+    procedure p is
+    begin
+      put(x)
+    end ;
+    procedure f is
+    begin
+      y:=90
+    end;
+  end ;
+  e :a ;
+begin
+  e:=a.create();
+  e.p()
+end.

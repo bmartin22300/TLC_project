@@ -1,0 +1,37 @@
+//-----------------------------------------------
+//  Programme incorrect
+//   M. Guyomard
+//
+//   héritage depuis une classe qui n'existe pas
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+   
+    constructor create is
+    begin
+      r:=i
+    end ;
+    
+  end ;
+  
+  type b is class(c)				//mess. erreur attendu ici
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+   
+    constructor create is
+    begin
+      r:=i
+    end ;
+    
+  end ;
+  
+begin
+  put(15)
+end.

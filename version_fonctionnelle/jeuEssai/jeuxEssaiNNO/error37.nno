@@ -1,0 +1,24 @@
+//-----------------------------------------------
+//  Programme erroné :
+//   M. Guyomard
+//
+//  accès à attribut hors classe
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+    r : integer ;
+  interface  
+    constructor create() ;
+  implementation
+    constructor create is
+    begin
+      r:=342
+    end ;
+  end ;
+  
+  e:a;
+begin
+  e:=a.create();
+  e:=a.r()			//mess. erreur attendu ici
+end.

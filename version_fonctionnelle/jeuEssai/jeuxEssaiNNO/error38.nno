@@ -1,0 +1,25 @@
+//-----------------------------------------------
+// Programme erroné :
+//  M. Guyomard
+//
+//  this utilisé en dehors d'une classe
+//  
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+    r : integer ;
+  interface  
+    constructor create() ;
+  implementation
+    constructor create is
+    begin
+      r:=58
+    end ;
+  end ;
+
+  e:a;
+  
+begin
+  e:=this    //mess. erreur attendu
+end.

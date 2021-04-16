@@ -1,0 +1,29 @@
+//-----------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//  
+//  double déclaration de méthode-procédure
+//-----------------------------------------------  
+procedure pp is
+  
+  type b is class
+    s :integer ;
+  interface  
+    constructor create() ;
+    procedure t(s : in integer) ;
+    procedure t(s : in integer) ;			//mess. erreur attendu ici
+  implementation
+    constructor create is
+    begin
+      s:=9
+    end ;
+    procedure t is
+      x :integer ;
+    begin
+      x:=90
+    end ;
+  end ;
+
+begin
+  put(15)
+end.

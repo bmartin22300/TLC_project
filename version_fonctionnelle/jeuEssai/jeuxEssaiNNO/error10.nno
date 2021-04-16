@@ -1,0 +1,22 @@
+//-----------------------------------------------
+//programme incorrect
+//  M. Guyomard
+//
+//  integer comme identificateur d'attribut
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class 
+    integer : integer ;			//mess. erreur attendu ici
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+    constructor create is
+    begin
+      integer:=i  // la compilation n'atteint pas cette ligne
+    end ;
+  end ;
+  e :a ;
+begin
+  e:=a.create(56)
+end.

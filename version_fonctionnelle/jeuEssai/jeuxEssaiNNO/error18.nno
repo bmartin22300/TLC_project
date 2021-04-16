@@ -1,0 +1,39 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// conflit attribut/classe
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+  end ;
+  
+  type b is class
+    a : a ;
+  interface  
+    constructor create(i : in integer) ;
+    procedure q() ;
+  implementation
+    constructor create is
+    begin
+      a:=nil
+    end ;
+    procedure q is
+    begin
+      a:=a.create(6)   //ICI erreur sur le a. (attribut et non classe) Mess. erreur attendu
+    end ;
+  end ;
+  
+  e :b ;
+begin
+  e:=b.create(12)
+end.

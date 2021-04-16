@@ -1,0 +1,34 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// Double déclaration d'un identificateur de classe
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    x : integer ;
+  interface  
+    constructor create() ;
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+  end ;
+  
+  type a is class		//mess. erreur attendu ici
+    x : integer ;
+  interface  
+    constructor create() ;
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+  end ;
+  
+  e :a ;
+begin
+  e:=a.create()
+end.

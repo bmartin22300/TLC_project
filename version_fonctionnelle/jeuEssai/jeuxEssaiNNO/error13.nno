@@ -1,0 +1,30 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// Double déclaration de paramètre formel dans une méthode
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    x : integer ;
+  interface  
+    constructor create() ;
+    procedure p(i: in integer; i: in out integer) ;  //mess. erreur attendu ici	
+  implementation
+    constructor create is
+    begin
+      x:=77
+    end ;
+    procedure p is
+    begin
+      x:= 34
+    end;
+  end ;
+  c:integer;
+  e :a ;
+begin
+  e:=a.create();
+  c:=34;
+  e.p(14,c)	
+end.

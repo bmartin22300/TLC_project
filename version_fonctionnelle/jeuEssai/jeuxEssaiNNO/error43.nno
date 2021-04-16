@@ -1,0 +1,33 @@
+//-----------------------------------------------------
+// Programme incorrect
+//    M. Guyomard
+//
+//  fonction qui modifie un paramètre formel
+//-----------------------------------------------------
+
+
+procedure e is
+  type a is class
+    r: integer;
+  interface
+    constructor create();
+    function o(i: integer) return integer;
+  implementation
+    constructor create is
+    begin
+      r:=0
+    end;
+    function o is
+    begin
+      i:=i+1;                  //mess. erreur attendu ici
+      return 15
+    end; 
+  end;
+
+begin
+  put(15)
+end.
+
+
+
+

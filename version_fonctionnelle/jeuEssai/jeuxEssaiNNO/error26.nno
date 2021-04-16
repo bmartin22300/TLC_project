@@ -1,0 +1,55 @@
+//----------------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//
+// appel d'une méthode spécifique au type dynamique
+//----------------------------------------------------
+
+
+procedure e is
+
+  type a is class
+    r: integer;
+  interface
+    constructor create();
+    procedure p();
+  implementation
+    constructor create is
+    begin
+      r:=0
+    end;
+    procedure p is
+    begin
+      r:=r+1
+    end;
+  end;
+  
+  type b is class(a)
+  interface
+    constructor create();
+    procedure q();
+  implementation
+    constructor create is
+    begin
+      r:=1
+    end;
+    procedure q is
+    begin
+      r:=r+2
+    end;
+  end;
+  
+  x: a;
+  y: b;
+begin
+  x:=a.create();
+  y:=b.create();
+  x:=y;               //x prend le type dyn b. Correct
+  x.p();              //appel de la méthode p de b. Correct
+  y.q();              //appel de la méthode q de b. Correct
+  x.q()	              //interdit : appel d'une méthode inférieure. Mess. erreur attendu ici
+end.
+
+
+
+

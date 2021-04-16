@@ -1,0 +1,24 @@
+//--------------------------------------------------------------------
+//  Programme incorrect
+//   M. Guyomard
+//
+//    l'appel d'un constructeur est incompatible avec sa déclaration :
+//    il est appelé avec un objet (et non une classe)
+//-------------------------------------------------------------------- 
+
+procedure e is
+  type un is class
+    v: integer;
+  interface
+    constructor create() ;
+  implementation
+    constructor create is
+    begin
+      v:=9
+    end ;
+  end ;
+  
+  a:un ;
+begin
+  a :=a.create()		// a : ref objet. Mess erreur attendu ici
+end.

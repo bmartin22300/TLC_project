@@ -1,0 +1,27 @@
+//--------------------------------------------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//
+// Une classe hérite d'elle même : circuit dans le graphe de la relation d'héritage
+// N'exige pas un cas particulier dans le compilateur pour être traitée : 
+// l'ident de la classe ne doit être introduit dans la TDI qu'après la )
+//--------------------------------------------------------------------------------
+
+
+procedure e is
+
+  type a is class (a)                          //ici
+    r: integer;
+  interface
+    constructor create();
+  implementation
+    constructor create is
+    begin
+      r:=0
+    end;
+  end;
+  
+  x: a;
+begin
+   x.create()
+end.

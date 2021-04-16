@@ -1,0 +1,35 @@
+//---------------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//
+//  méthodes identifiées par integer et par nil
+//
+//---------------------------------------------------
+
+
+procedure e is
+
+  type a is class
+    r: integer;
+  interface
+    constructor integer();     //mess. erreur attendu ici
+    procedure nil(i: integer); //incorrect
+  implementation
+    constructor integer is
+    begin
+      r:=0
+    end;
+    procedure nil is
+    begin
+      r:=0
+    end;
+  end;
+  
+  val: a;
+begin
+  val:=a.integer()
+end.
+
+
+
+

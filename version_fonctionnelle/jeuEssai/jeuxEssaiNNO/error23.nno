@@ -1,0 +1,33 @@
+//--------------------------------------------------------------
+//  Programme incorrect
+//  M. Guyomard
+//
+//  la définition d'une méthode est différente de sa déclaration :
+//   fonction devient procédure
+//  
+//--------------------------------------------------------------  
+
+procedure e is
+
+  type cl is class
+    r:integer;
+  interface
+    constructor create() ;
+    function op() return integer ;  	//déclaration
+    
+  implementation
+    constructor create is
+    begin
+      r:=23
+    end ;
+    procedure op is                   //mess. erreur attendu ici
+    begin
+      put(r)								
+    end ;
+  end ;
+  
+  e :cl ;
+begin
+  e:=cl.create();
+  e.op()
+end.

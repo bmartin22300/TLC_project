@@ -1,0 +1,32 @@
+//-----------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// redéfinition d'un attribut dans une même hiérarchie
+//  
+//-----------------------------------------------  
+procedure pp is
+  type a is class
+    r : integer ;    //première occurence de r
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+  end ;
+  type b is class(a)
+    r : boolean ;             //seconde occurence : mess. d'erreur attendu ici
+  interface  
+    constructor create(i : in integer) ;
+  implementation
+    constructor create is
+    begin
+      r:=true
+    end ;
+  end ;
+  e :b ;
+begin
+  e:=b.create(5)
+end.

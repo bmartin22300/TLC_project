@@ -1,0 +1,102 @@
+Ce répertoire contient des exemples de programmes nilNovi Objet présentant des
+erreurs qui devraient etre détectées à la compilation. Les programmes sont
+tous syntaxiquement corrects.
+
+
+x1: pas de return dans le corps d'une fonction
+
+x2: la valeur délivrée par le return est de type > au type déclaré
+
+x3: condition de while non booléenne
+
+x4: une méthode déclarée n'est pas définie dans la classe
+
+x5: la définition d'une méthode est différente de sa déclaration :
+   fonction devient procédure
+
+x6: l'appel d'un constructeur est incompatible avec sa déclaration :
+   il est appelé avec un objet (et non une classe)
+
+x7: l'appel d'un constructeur est incompatible avec sa déclaration :
+   il est appelé avec une classe différente de celle ou il est défini
+
+x8: affectation this (paramètre entrée)
+
+x9: une méthode-procédure est appelée
+   avec des paramètres incompatibles en nombre
+
+x10: une procédure  est appelée comme une fonction
+
+x11: pas de construceur dans une classe.
+
+x12: une procédure  est appelée avec une classe comme préfixe
+
+x13: construceur appelé comme une procédure 
+
+x14: affectation de variables objet incompatibles
+
+x15: double déclaration de classe
+
+x16: double déclaration de méthode-procédure
+
+x17: tentative de redéfinition d'attributs
+
+x18: double déclaration d'attributs
+
+x19: double déclaration de paramètres
+
+x20: tentative d'utilisation d'une méthode inférieure
+
+x21: this utilisé en dehors d'une classe
+
+x22: accès à attribut hors classe (avec la nouvelle gram : erreur stx)
+
+x23: double déclaration variable
+
+x24: redéfinition de méthode incorrecte (paramètres)
+
+x25: return hors fonction
+
+x26: pas de constructeur
+
+x27: plusieurs constructeurs
+
+x28: /
+
+x29: /
+
+x30: hériter d'une classe qui n'existe pas
+
+x31: utilisation des mots réservés this, integer, et boolean
+
+x32: /
+
+x33: return dans un constructeur
+
+x34: paramètre de mode in out avec expression en pe.
+
+x35: constructeur avec paramètre de mode in out
+
+x36: paramètre mode in out dans fonction
+
+x37: modification this
+
+x38: condition alternative non booléenne
+
+x39: problème de type dans une affectation
+
+x40: double déclaration d'attribut dans une même classe
+
+x41: erreur de mode dans un paramètre effectif
+
+x42: erreur type sur put
+
+x43: erreur type sur get
+
+x44: erreur sur méthode
+
+x45: retrun conditionnel dans une fonction (détection non obligatoire compte tenu des instructions du projet
+
+x46: /
+
+x47: type délivré par une fonction différent du type déclaré

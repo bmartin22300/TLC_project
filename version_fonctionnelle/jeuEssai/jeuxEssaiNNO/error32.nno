@@ -1,0 +1,27 @@
+//-----------------------------------------------
+// Programme incorrect
+//  M. Guyomard
+//
+//   return dans la partie impérative
+//-----------------------------------------------  
+procedure pp is
+
+  type a is class
+    r : integer ;
+  interface  
+    constructor create() ;
+    procedure p() ;
+  implementation
+    constructor create is
+    begin
+      r:=67
+    end ;
+    procedure p is
+    begin
+      r:=r+1
+    end ;
+  end ;
+  
+begin
+  return 15             //mess. erreur attendu
+end.

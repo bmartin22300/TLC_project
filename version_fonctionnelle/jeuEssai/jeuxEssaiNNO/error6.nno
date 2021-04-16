@@ -1,0 +1,30 @@
+//-----------------------------------------------------------
+//programme incorrect :
+//  M. Guyomard
+//
+// this déclaré comme identificateur de paramètre formel
+//  
+//-----------------------------------------------------------  
+procedure pp is
+  type a is class 			
+    r : integer ;
+  interface  
+    constructor create(i : in integer) ;
+    procedure p(this :in out integer) ;		//mess. erreur ici	
+  implementation
+    constructor create is
+    begin
+      r:=i
+    end ;
+    procedure p is
+    begin
+      put(this)	//la compilation ne doit pas atteindre cette instruction
+    end ;	
+  end ;
+  e :a ;
+  f: integer;
+begin
+  e:=a.create(12);
+  f:=13;
+  e.p(f)	
+end.

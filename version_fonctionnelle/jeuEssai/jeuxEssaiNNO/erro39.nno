@@ -1,0 +1,44 @@
+//--------------------------------------------------------------
+// Programme incorrect
+//    M. Guyomard
+//
+//   type délivré effectivement supérieur au type déclaré
+//--------------------------------------------------------------
+
+
+procedure e is
+  type a is class
+    r: integer;
+  interface
+    constructor create();
+  implementation
+    constructor create is
+    begin
+      r:=0
+    end;
+  end;
+  
+  type b is class(a)
+    s: integer;
+  interface
+    constructor create();
+    function c() return b;
+  implementation
+    constructor create is
+    begin
+      r:=0;
+      s:=8
+    end;
+    function c is
+    begin
+      return a.create()  //mess. erreur attendu ici
+    end;
+  end;
+  val: a;
+begin
+  val:=a.create()
+end.
+
+
+
+

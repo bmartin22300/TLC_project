@@ -1,0 +1,46 @@
+procedure pp is
+  type abr is class
+    val: integer;
+    g,d: abr;
+  interface
+    constructor createNoeud(v: integer; l,r: abr);
+    procedure inserVal(v: integer);
+    procedure parcoursDGD(); //parcours descendant Gauche-droit
+  implementation
+    constructor createNoeud is
+    begin
+      val:=v;
+      g:=l;
+      d:=r
+    end;
+    procedure inserVal is
+    begin
+      if this=nil then
+        this:=abr.createNoeud(v,nil,nil)
+      else
+        if val>v then
+          g.inserVal(v)
+        else
+          d.inserVal(v)
+        end
+      end
+    end;
+    procedure parcoursDGD is
+    begin
+      if this/=nil then
+        this.parcoursDGD(g);
+        put(val);
+        this.parcoursDGD(d)
+      end
+    end;
+  end;
+  t:abr; 
+begin
+  t:=null;
+  t.inserVal(8);
+  t.inserVal(12);
+  t.inserVal(4);
+  t.inserVal(2);
+  t.inserVal(5);
+  t.parcours()
+end.

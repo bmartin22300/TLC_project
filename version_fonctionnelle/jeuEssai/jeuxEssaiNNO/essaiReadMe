@@ -1,0 +1,3 @@
+
+essai9: arbre binaire de recherche. Cet exemple ne marche pas : dans
+T.inserer(..) on applique uen méthode virtuelle à un objet qui n'existe pas.
