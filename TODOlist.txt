@@ -1,0 +1,5 @@
+TDI :
+type à définir
+2.14 : gérer erreur : double déclaration de variable
+
+comment accéder aux identifiants de la TDI ?

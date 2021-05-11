@@ -27,9 +27,9 @@ import interpreteurNNO.programmeObjetNNO.*;
 public class PointsGeneration {
 
   JTextArea jTA;
-  PListeEnt l;
+  private PListeEnt l;//interface de gestion de la TDI
   anaLex aL;
-  boolean varGlo; //a vrai si on est dans la partie varGlo
+  boolean varGlo; //a vrai si on est dans la partie varGlo --> doit on analyser l'identificateur de var gl
   interpreteur inter;
 
   public PointsGeneration(javax.swing.JTextArea af,interpreteur nouvInter){
@@ -39,18 +39,18 @@ public class PointsGeneration {
   }
 
   public void debut(anaLex nouvAL) throws MonException {//diag synt n° 1
-    l= new TListeEnt();
+    setL(new TListeEnt());
     aL=nouvAL;
   }
 
   public void creerClasse(String identClasse) throws MonException {//diag synt n° 6
-    int aSC=l.getAdStatEntGlo(identClasse); //exemple d'accès à l'interface PListeEnt
+    int aSC=getL().getAdStatEntGlo(identClasse); //exemple d'accès à l'interface PListeEnt
     if (aSC!=-1) {
       aL.erreur(15,"");
     }else if (identClasse.equals("integer") ||identClasse.equals("boolean") || identClasse.equals("this")){
       aL.erreur(34,"");
     }else{
-      l.creerClasse(identClasse);
+      getL().creerClasse(identClasse);
     }
   }
 
@@ -64,12 +64,19 @@ public class PointsGeneration {
 
   public void insererIdentGlo(String identVarGlo) {//diag synt n° 28
     if (varGlo==true) {
-      l.creerVarGlo(identVarGlo);
+    	//NEW
+    	//System.out.println("IdClCour");
+    	
+    	//for(String identificateur:getL().id) {
+    		
+    	//}
+      getL().creerVarGlo(identVarGlo);
     }
   }
 
+  //affichage TDI
   public void fin(){//diag synt n° 1
-    jTA.append(l.toString());
+    jTA.append(getL().toString());
   }
 
   public void genCode(){//diag synt n° 1
@@ -224,5 +231,13 @@ public class PointsGeneration {
 	inter.put();//146
 	inter.finProg();//147
   }
+
+public PListeEnt getL() {
+	return l;
+}
+
+public void setL(PListeEnt l) {
+	this.l = l;
+}
 
 }

@@ -335,7 +335,7 @@ public class Cadre1 extends JFrame {
   void jButton4_actionPerformed(ActionEvent e) {
     //compilation
     jTextArea2.setText("");  //reset editeur messages de service nno
-    anaLex al= new anaLex(jTextArea1,jTextArea2);
+    anaLex al= new anaLex(jTextArea1,jTextArea2);//création table des mots clés
     al.traiterToutesLesLignes(); //analyse lexicale ppt dite
     inter=new interpreteur(jTextArea2,jTextArea3);
 

@@ -46,7 +46,6 @@ public class analyseurLL1{
     aL=al;
     aT=at;
     jTextArea2=jTa;
-
   }
 
   public void parser() throws MonException {
@@ -60,7 +59,7 @@ public class analyseurLL1{
 
   // 1 programme
   void programme() throws MonException {
-    aT.debut(aL);                                 //PG
+    aT.debut(aL);                                 //PG (pt de génération)
     specifProgPrinc();
     aL.accepteMotCle("is");
     corpsProgPrinc();
@@ -69,12 +68,15 @@ public class analyseurLL1{
     };
     aT.fin();                                     //PG (affiche le contenu de la TDI)
     aT.genCode();                                 //PG qui génère du code
+    System.out.println("----------------------------------TDI-----------------------------------------------");
+    //System.out.println(aT.getL().getIdentClasseCour());
+    System.out.println("------------------------------------------------------------------------------------");
   }//programme
 
   // 2 corpsProgPrinc
   void corpsProgPrinc() throws MonException {
     if (! aL.estMotCle("begin")){
-      partieDecla();
+      partieDecla();//declaration de var gl
     };
     aL.accepteMotCle("begin");
     if (! aL.estMotCle("end")){
@@ -330,7 +332,7 @@ public class analyseurLL1{
 
   // 30 instr
   void instr() throws MonException {
-    if(aL.estIdentificateur()){
+    if(aL.estIdentificateur()){//var/meth def
       aL.accepteIdentificateur();
       if(aL.estCaractere('.')){
         aL.lire();
