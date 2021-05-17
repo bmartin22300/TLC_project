@@ -12,6 +12,7 @@ import ptGen.*;
 import analyseurLexical.*;
 import analyseurLexical.MesExceptions.*;
 import analyseurSyntaxique.*;
+import analyseurSynthaxique.MesExceptions.VarGloExisteDejaException;
 import interpreteurNNO.instructions.*;
 import interpreteurNNO.programmeObjetNNO.*;
 
@@ -360,7 +361,14 @@ public class Cadre1 extends JFrame {
       jButton5.setEnabled(false);
       jButton6.setEnabled(false);
       jButton7.setEnabled(false);
-    }
+    }catch(VarGloExisteDejaException vged) {
+    	Toolkit.getDefaultToolkit().beep(); //bip si erreur
+    	//TODO: surligner en rouge la ligne qui throw l'erreur
+         jTextArea2.append("La variable globale : "+vged.identificateur+" existe deja.\n");
+    } catch (Exception e1) {
+		e1.printStackTrace();
+		jTextArea2.append("Exception inconnue.\n");
+	}
   }
 
   int rechercheFinUl(int i){

@@ -25,6 +25,7 @@ package analyseurSyntaxique;
 
 import analyseurLexical.*;
 import analyseurLexical.MesExceptions.*;
+import analyseurSynthaxique.MesExceptions.VarGloExisteDejaException;
 
 import javax.swing.*;
 
@@ -48,7 +49,7 @@ public class analyseurLL1{
     jTextArea2=jTa;
   }
 
-  public void parser() throws MonException {
+  public void parser() throws Exception {
     aL.initLire();
     programme();
   }
@@ -58,7 +59,7 @@ public class analyseurLL1{
   */
 
   // 1 programme
-  void programme() throws MonException {
+  void programme() throws Exception {
     aT.debut(aL);                                 //PG (pt de génération)
     specifProgPrinc();
     aL.accepteMotCle("is");
@@ -74,7 +75,7 @@ public class analyseurLL1{
   }//programme
 
   // 2 corpsProgPrinc
-  void corpsProgPrinc() throws MonException {
+  void corpsProgPrinc() throws Exception {
     if (! aL.estMotCle("begin")){
       partieDecla();//declaration de var gl
     };
@@ -87,13 +88,13 @@ public class analyseurLL1{
   }//corpsProgPrinc
 
   // 3 specifProgPrinc
-  void specifProgPrinc() throws MonException {
+  void specifProgPrinc() throws Exception {
     aL.accepteMotCle("procedure");
     aL.accepteIdentificateur();
   }//specifProgPrinc
 
   // 4 partieDecla
-  void partieDecla() throws MonException {
+  void partieDecla() throws Exception {
     if (aL.estMotCle("type")){
       listeDeclaClass();
       if (! aL.estMotCle("begin")){
@@ -109,7 +110,7 @@ public class analyseurLL1{
   }//partieDecla
 
   // 5 listeDeclaClass
-  void listeDeclaClass() throws MonException {
+  void listeDeclaClass() throws Exception {
     declaClass();
     while(aL.estMotCle("type")){
       declaClass();
@@ -117,7 +118,7 @@ public class analyseurLL1{
   }//listeDeclaClass
 
   // 6 declaClass
-  void declaClass() throws MonException {
+  void declaClass() throws Exception {
     aL.accepteMotCle("type");
     aT.creerClasse(aL.getUl().ch());        //PG
     aL.accepteIdentificateur();
@@ -138,24 +139,24 @@ public class analyseurLL1{
   }//declaClass
 
   // 7 heritage
-  void heritage() throws MonException {
+  void heritage() throws Exception {
     aL.accepteCaractere('(');
     aL.accepteIdentificateur();
     aL.accepteCaractere(')');
   }//heritage
 
   // 8 interfaceNNO
-  void interfaceNNO() throws MonException {
+  void interfaceNNO() throws Exception {
     listeSpecifMethodes();
   }//interfaceNNO
 
   // 9 listeChamps
-  void listeChamps() throws MonException {
+  void listeChamps() throws Exception {
     listeDeclaVar();
   }//listeChamps
 
   // 10 listeSpecifMethodes
-  void listeSpecifMethodes() throws MonException {
+  void listeSpecifMethodes() throws Exception {
     specifMethode();
     while (aL.estMotCle("procedure") || aL.estMotCle("function") || aL.estMotCle("constructor")){
       specifMethode();
@@ -163,7 +164,7 @@ public class analyseurLL1{
   }//listeSpecifMethode
 
   // 11 specifMethode
-  void specifMethode() throws MonException {
+  void specifMethode() throws Exception {
     if(aL.estMotCle("procedure")){
       specifMethodeProc();
     }else if(aL.estMotCle("function")){
@@ -176,14 +177,14 @@ public class analyseurLL1{
   }//specifMethode
 
   // 12 specifMethodeProc
-  void specifMethodeProc() throws MonException {
+  void specifMethodeProc() throws Exception {
     aL.accepteMotCle("procedure");
     aL.accepteIdentificateur();
     partieFormelle();
   }//specifMethodeProc
 
   // 13 specifMethodeFonct
-  void specifMethodeFonct() throws MonException {
+  void specifMethodeFonct() throws Exception {
     aL.accepteMotCle("function");
     aL.accepteIdentificateur();
     partieFormelle();
@@ -192,14 +193,14 @@ public class analyseurLL1{
   }//specifMethodeFonct
 
   // 14 specifMethodeConstr
-  void specifMethodeConstr() throws MonException {
+  void specifMethodeConstr() throws Exception {
     aL.accepteMotCle("constructor");
     aL.accepteIdentificateur();
     partieFormelle();
   }//specifMethodeConstr
 
   // 15 implementation
-  void implementation() throws MonException {
+  void implementation() throws Exception {
     operation();
     while (aL.estMotCle("procedure") || aL.estMotCle("function") || aL.estMotCle("constructor")){
       operation();
@@ -207,7 +208,7 @@ public class analyseurLL1{
   }//implementation
 
   // 16 operation
-  void operation() throws MonException {
+  void operation() throws Exception {
     if(aL.estMotCle("procedure")){
       procedure();
     }else if(aL.estMotCle("function")){
@@ -220,7 +221,7 @@ public class analyseurLL1{
   }//operation
 
   // 17 constructeur
-  void constructeur() throws MonException {
+  void constructeur() throws Exception {
     aL.accepteMotCle("constructor");
     aL.accepteIdentificateur();
     aL.accepteMotCle("is");
@@ -228,7 +229,7 @@ public class analyseurLL1{
   }//constructeur
 
   // 18 procedure
-  void procedure() throws MonException {
+  void procedure() throws Exception {
     aL.accepteMotCle("procedure");
     aL.accepteIdentificateur();
     aL.accepteMotCle("is");
@@ -236,7 +237,7 @@ public class analyseurLL1{
   }//procedure
 
   // 19 fonction
-  void fonction() throws MonException {
+  void fonction() throws Exception {
    aL.accepteMotCle("function");
    aL.accepteIdentificateur();
    aL.accepteMotCle("is");
@@ -244,7 +245,7 @@ public class analyseurLL1{
   }//fonction
 
   // 20 corpsFonct
-  void corpsFonct() throws MonException {
+  void corpsFonct() throws Exception {
     if (! aL.estMotCle("begin")){
       partieDeclaProc();
     };
@@ -254,7 +255,7 @@ public class analyseurLL1{
   }//corpsFonct
 
   // 21 partieFormelle
-  void partieFormelle() throws MonException {
+  void partieFormelle() throws Exception {
     aL.accepteCaractere('(');
     if (!aL.estCaractere(')')){
       listeSpecifFormelle();
@@ -263,7 +264,7 @@ public class analyseurLL1{
   }//partieFormelle
 
   // 22 listeSpecifFormelle
-  void listeSpecifFormelle() throws MonException {
+  void listeSpecifFormelle() throws Exception {
     specif();
     while(aL.estCaractere(';')){
      aL.lire();//accepteCaractere(';');
@@ -272,7 +273,7 @@ public class analyseurLL1{
   }//listeSpecifFormelle
 
   // 23 specif
-  void specif() throws MonException {
+  void specif() throws Exception {
     listeIdent();
     aL.accepteCaractere(':');
     if (aL.estMotCle("in")){
@@ -282,7 +283,7 @@ public class analyseurLL1{
   }//specif
 
   // 24 mode
-  void mode() throws MonException {
+  void mode() throws Exception {
     aL.accepteMotCle("in");
     if (aL.estMotCle("out")){
       aL.lire();
@@ -290,12 +291,12 @@ public class analyseurLL1{
   }//mode
 
   // 25 partieDeclaProc
-  void partieDeclaProc() throws MonException {
+  void partieDeclaProc() throws Exception {
     listeDeclaVar();
   }//parteiDeclaProc
 
   // 26 listeDeclaVar
-  void listeDeclaVar() throws MonException {
+  void listeDeclaVar() throws Exception {
     declaVar();
     while(aL.estIdentificateur()){
       declaVar();
@@ -303,7 +304,7 @@ public class analyseurLL1{
   }//listeDeclaVar
 
   // 27 declaVar
-  void declaVar() throws MonException {
+  void declaVar() throws Exception {
     listeIdent();
     aL.accepteCaractere(':');
     aL.accepteIdentificateur();
@@ -311,7 +312,7 @@ public class analyseurLL1{
   }//declaVar
 
   // 28 listeIdent
-  void listeIdent() throws MonException {
+  void listeIdent() throws Exception {
     aT.insererIdentGlo(aL.getUl().ch()); 						 //PG
     aL.accepteIdentificateur();
     while(aL.estCaractere(',')){
@@ -322,7 +323,7 @@ public class analyseurLL1{
   }//listeIdent
 
   // 29 suiteInstrNonVide
-  void suiteInstrNonVide() throws MonException {
+  void suiteInstrNonVide() throws Exception {
     instr();
     while (aL.estCaractere(';')){
       aL.lire();
@@ -331,7 +332,7 @@ public class analyseurLL1{
   }//suiteInstrNonVide
 
   // 30 instr
-  void instr() throws MonException {
+  void instr() throws Exception {
     if(aL.estIdentificateur()){//var/meth def
       aL.accepteIdentificateur();
       if(aL.estCaractere('.')){
@@ -362,7 +363,7 @@ public class analyseurLL1{
   }//instr
 
   // 31 listePe
-  void listePe() throws MonException {
+  void listePe() throws Exception {
     expression();
     while(aL.estCaractere(',')){
       aL.lire();
@@ -371,7 +372,7 @@ public class analyseurLL1{
   }//listePe
 
   // 32 expression
-  void expression() throws MonException {
+  void expression() throws Exception {
     exp1();
     while(aL.estMotCle("or")){
       aL.lire();
@@ -380,7 +381,7 @@ public class analyseurLL1{
   }//expression
 
   // 33 exp1
-  void exp1() throws MonException {
+  void exp1() throws Exception {
     exp2();
     while(aL.estMotCle("and")){
       aL.lire();
@@ -389,7 +390,7 @@ public class analyseurLL1{
   }//exp1
 
   // 34 exp2
-  void exp2() throws MonException{
+  void exp2() throws Exception{
     //la distinction entre les opérateurs = et /= et les autres n'est pas
     //nécessaire syntaxiquement. Elle l'est sémantiquement puisque = et /=
     //sont applicables à tous types. les autres ne sont applicables qu'aux entiers
@@ -404,7 +405,7 @@ public class analyseurLL1{
   }//exp2
 
   // 35 opRel
-  void opRel() throws MonException {
+  void opRel() throws Exception {
     if(aL.estCaractere('=')){
       aL.lire();
     }else if (aL.estCaractere('<')){
@@ -423,7 +424,7 @@ public class analyseurLL1{
   }//opRel
 
   // 36 exp3
-  void exp3() throws MonException {
+  void exp3() throws Exception {
     exp4();
     while(aL.estCaractere('+') || aL.estCaractere('-')){
       opAd();
@@ -432,7 +433,7 @@ public class analyseurLL1{
   }//exp3
 
   // 37 opAd
-  void opAd() throws MonException {
+  void opAd() throws Exception {
     if(aL.estCaractere('+')) {
       aL.lire();
     }else if (aL.estCaractere('-')){
@@ -443,7 +444,7 @@ public class analyseurLL1{
   }//opAd
 
   // 38 exp4
-  void exp4() throws MonException {
+  void exp4() throws Exception {
     prim();
     while(aL.estCaractere('*') || aL.estCaractere('/')){
       opMult();
@@ -452,7 +453,7 @@ public class analyseurLL1{
   }//exp4
 
   // 39 opMult
-  void opMult() throws MonException {
+  void opMult() throws Exception {
      if(aL.estCaractere('*')){
        aL.lire();
      }else if (aL.estCaractere('/')){
@@ -463,7 +464,7 @@ public class analyseurLL1{
   }//opMult
 
   //40 prim
-  void prim() throws MonException {
+  void prim() throws Exception {
     if(aL.estCaractere('+') || aL.estCaractere('-') || aL.estMotCle("not")) {
       opUnaire();
     };
@@ -471,7 +472,7 @@ public class analyseurLL1{
   }
 
   //41 opUnaire
-  void opUnaire() throws MonException {
+  void opUnaire() throws Exception {
     if (aL.estCaractere('+')){
       aL.lire();
     }else if (aL.estCaractere('-')) {
@@ -484,7 +485,7 @@ public class analyseurLL1{
   }//opUnaire
 
   // 42 elemPrim
-  void elemPrim() throws MonException {
+  void elemPrim() throws Exception {
     if (aL.estEntier() || aL.estMotCle("true") || aL.estMotCle("false") || aL.estMotCle("nil")){
       valeur();
     }else if(aL.estCaractere('(')){
@@ -503,7 +504,7 @@ public class analyseurLL1{
   }//elemPrim
 
   // 43 listeAppelFonct
-  void listeAppelFonct() throws MonException {
+  void listeAppelFonct() throws Exception {
     appelFonct();
     while(aL.estCaractere('.')){
       aL.accepteCaractere('.');
@@ -512,7 +513,7 @@ public class analyseurLL1{
   }//listeAppelFonct
 
   // 44 appelFonct
-  void appelFonct() throws MonException {
+  void appelFonct() throws Exception {
     aL.accepteIdentificateur();
     aL.accepteCaractere('(');
     if (!aL.estCaractere(')')){
@@ -522,7 +523,7 @@ public class analyseurLL1{
   }//appelFonct
 
   // 45 valeur
-  void valeur() throws MonException {
+  void valeur() throws Exception {
     if (aL.estEntier()){
       aL.lire();
     }else if(aL.estMotCle("true")) {
@@ -537,7 +538,7 @@ public class analyseurLL1{
   }//valeur
 
   // 46 es
-  void es() throws MonException {
+  void es() throws Exception {
     if (aL.estMotCle("get")){
       aL.lire();
       aL.accepteCaractere('(');
@@ -554,7 +555,7 @@ public class analyseurLL1{
   }//es
 
   // 47	boucle
-  void boucle() throws MonException {
+  void boucle() throws Exception {
     aL.accepteMotCle("while");
     expression();
     aL.accepteMotCle("loop");
@@ -563,7 +564,7 @@ public class analyseurLL1{
   }//boucle
 
   // 48	altern
-  void altern() throws MonException {
+  void altern() throws Exception {
     aL.accepteMotCle("if");
     expression();
     aL.accepteMotCle("then");
@@ -576,13 +577,13 @@ public class analyseurLL1{
   }//altern
 
   // 49	retour
-  void retour() throws MonException {
+  void retour() throws Exception {
     aL.accepteMotCle("return");
     expression();
   }//retour
 
   // 50 corpsProc
-  void corpsProc() throws MonException {
+  void corpsProc() throws Exception {
     if (! aL.estMotCle("begin")){
       partieDeclaProc();
     };

@@ -18,8 +18,7 @@ import PtGen.TListeEnt.PListeEnt;
 import java.util.*;
 import analyseurLexical.MesExceptions.*;
 import analyseurLexical.uniteLexicale.*;
-
-
+import analyseurSynthaxique.MesExceptions.VarGloExisteDejaException;
 import nno.*;
 import interpreteurNNO.programmeObjetNNO.*;
 
@@ -62,16 +61,28 @@ public class PointsGeneration {
     varGlo=false;
   }
 
-  public void insererIdentGlo(String identVarGlo) {//diag synt n° 28
+  public void insererIdentGlo(String identVarGlo) throws VarGloExisteDejaException{//diag synt n° 28
     if (varGlo==true) {
     	//NEW
-    	//System.out.println("IdClCour");
     	
-    	//for(String identificateur:getL().id) {
-    		
-    	//}
-      getL().creerVarGlo(identVarGlo);
+    	/* TODO : delete
+    	String tdiString = getL().toString();
+	  	String[] tdiLigne = tdiString.split("\n");
+	  	for(String idCour : tdiLigne) {
+	  		String[] tdiMot = idCour.split(" ");
+	  		if(tdiMot[5].equals(identVarGlo)){ //si l'identificateur existe déjà alors rejeté une erreur 	  		
+	  			System.out.println("err");
+	  		}
+	  	}
+	  	*/
+    	int adStatVarGlo = getL().getAdStatVarGlo(identVarGlo);
+    	if(adStatVarGlo!=-1) {
+    		throw new VarGloExisteDejaException(identVarGlo);
+    	}
+      getL().creerVarGlo(identVarGlo);	
+      
     }
+    
   }
 
   //affichage TDI
