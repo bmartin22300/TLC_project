@@ -11,7 +11,7 @@
 //
 //------------------------------------------------------
 procedure pp is
-  i,i:integer;
+  i:integer;
 begin
   i:=1;
   //Invariant :

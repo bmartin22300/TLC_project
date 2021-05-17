@@ -2,4 +2,13 @@ TDI :
 type à définir
 2.14 : gérer erreur : double déclaration de variable
 
-comment accéder aux identifiants de la TDI ?
+Gestion d'erreurs :
+get booleen
+put booleen
+affectation de valeur d'un type différent de celui à laquelle la variable a été déclarée (int a = "abc")
+if entier
+while entier
+vérification que le type existe
+
+
+
