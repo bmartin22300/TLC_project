@@ -75,6 +75,7 @@ public class PointsGeneration {
 	  		}
 	  	}
 	  	*/
+    	
     	int adStatVarGlo = getL().getAdStatVarGlo(identVarGlo);
     	if(adStatVarGlo!=-1) {
     		throw new VarGloExisteDejaException(identVarGlo);

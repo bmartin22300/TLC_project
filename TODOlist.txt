@@ -2,6 +2,8 @@ TDI :
 type à définir
 2.14 : gérer erreur : double déclaration de variable
 
+Execution
+
 Gestion d'erreurs :
 get booleen
 put booleen
@@ -11,4 +13,4 @@ while entier
 vérification que le type existe
 
 
-
+Ajouter les points de génération qu'on créer aux 50 schémas
